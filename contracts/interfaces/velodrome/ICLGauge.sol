@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.23;
+pragma solidity >=0.8.23;
 
 interface ICLGauge {
     /// @notice NonfungiblePositionManager used to create nfts this gauge accepts

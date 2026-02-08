@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.19;
+pragma solidity >=0.8.19;
 
 import { IChainlink } from "../../interfaces/oracle/IChainlink.sol";
 import { IStableRouter } from "../../interfaces/common/IStableRouter.sol";
