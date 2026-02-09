@@ -318,18 +318,18 @@ contract StrategyPassiveManagerUniswap is StratFeeManagerInitializable, IStrateg
 
     /// @notice Harvest call to claim fees from pool, charge fees for Beefy, then readjust our positions.
     /// @param _callFeeRecipient The address to send the call fee to.
-    function harvest(address _callFeeRecipient) external {
+    function harvest(address _callFeeRecipient) external virtual {
         _harvest(_callFeeRecipient);
     }
 
     /// @notice Harvest call to claim fees from the pool, charge fees for Beefy, then readjust our positions.
-    /// @dev Call fee goes to the tx.origin. 
-    function harvest() external {
+    /// @dev Call fee goes to the tx.origin.
+    function harvest() external virtual {
         _harvest(tx.origin);
     }
 
     /// @notice Internal function to claim fees from the pool, charge fees for Beefy, then readjust our positions.
-    function _harvest(address _callFeeRecipient) private onlyCalmPeriods {
+    function _harvest(address _callFeeRecipient) internal onlyCalmPeriods {
         // Claim fees from the pool and collect them.
         _claimEarnings();
         _removeLiquidity();

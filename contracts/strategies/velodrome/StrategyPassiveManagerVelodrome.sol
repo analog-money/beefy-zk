@@ -420,18 +420,18 @@ contract StrategyPassiveManagerVelodrome is StratFeeManagerInitializable, IStrat
 
     /// @notice Harvest call to claim rewards from gauge then charge fees for Beefy and notify rewards.
     /// @param _callFeeRecipient The address to send the call fee to.
-    function harvest(address _callFeeRecipient) external {
+    function harvest(address _callFeeRecipient) external virtual {
         _harvest(_callFeeRecipient);
     }
 
     /// @notice Harvest call to claim rewards from gauge then charge fees for Beefy and notify rewards.
-    /// @dev Call fee goes to the tx.origin. 
-    function harvest() external {
+    /// @dev Call fee goes to the tx.origin.
+    function harvest() external virtual {
         _harvest(tx.origin);
     }
 
     /// @notice Internal function to claim rewards from gauge then charge fees for Beefy and notify rewards
-    function _harvest (address _callFeeRecipient) private {
+    function _harvest (address _callFeeRecipient) internal {
         // Claim rewards from gauge
         _claimEarnings();
 
