@@ -356,7 +356,11 @@ contract StrategyPassiveManagerUniswap is StratFeeManagerInitializable, IStrateg
     }
 
     /// @notice Function called to moveTicks of the position 
-    function moveTicks() external onlyCalmPeriods onlyRebalancers {
+    function moveTicks() external virtual onlyCalmPeriods onlyRebalancers {
+        _moveTicks();
+    }
+
+    function _moveTicks() internal {
         _claimEarnings();
         _removeLiquidity();
         _setTicks();

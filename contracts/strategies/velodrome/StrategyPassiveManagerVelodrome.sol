@@ -408,7 +408,11 @@ contract StrategyPassiveManagerVelodrome is StratFeeManagerInitializable, IStrat
     }
 
     /// @notice Function called to rebalance the position 
-    function moveTicks() external onlyCalmPeriods onlyRebalancers {
+    function moveTicks() external virtual onlyCalmPeriods onlyRebalancers {
+        _moveTicks();
+    }
+
+    function _moveTicks() internal {
         _claimEarnings();
         _removeLiquidity();
         _setTicks();
